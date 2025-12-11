@@ -8,14 +8,11 @@ Original file is located at
 
 
         # -*- coding: utf-8 -*-
-"""Student performance analyzer 
-
-"""
+"""Student performance analyzer
 Student Academic Performance Analyzer
 Author: Drina Musili - 250636DAI
 Course: DAI011 - Programming for AI
 Dataset: UCI Machine Learning Repository - Student Performance Dataset
-
 This application analyzes factors affecting student academic performance in Mathematics.
 """
 
