@@ -315,7 +315,7 @@ def main():
         st.header("📋 Dataset Overview")
         
         # Sample data
-        st.subheader("Sample Data (First 10 Rows)")
+        st.subheader("Sample Data (First 5 Rows)")
         st.dataframe(df.head(10), use_container_width=True, height=400)
         
         col1, col2 = st.columns(2)
