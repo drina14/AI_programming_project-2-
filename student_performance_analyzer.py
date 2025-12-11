@@ -17,7 +17,6 @@ import matplotlib.pyplot as plt
 
 import seaborn as sns
 
-"""page configuration."""
 
 st.set_page_config(
     page_title="Student Performance Analyzer",
@@ -26,7 +25,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-"""Custom CSS."""
 
 st.markdown("""
     <style>
@@ -44,7 +42,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-"""Data loading"""
 
 @st.cache_data
 def load_data():
@@ -62,13 +59,11 @@ def load_data():
 url = "https://raw.githubusercontent.com/arunk13/MSDA-Assignments/master/IS607Fall2015/Assignment3/student-mat.csv"
 df = pd.read_csv(url, sep=';')
 
-"""Calculated columns, Average grade across all three periods."""
 
 df['average_grade'] = (df['G1'] + df['G2'] + df['G3']) /3
 
 
 
-"""categorizing performance based on final grade"""
 
 def categorize_performance(grade):
   """Categorize student performance into 4 levels"""
@@ -83,7 +78,6 @@ def categorize_performance(grade):
      df ['performance_category'] = df['G3'].apply(categorize_performance)
      return df
 
-"""Statistical Analysis"""
 
 def calculate_overall_stats(df):
   """Calculate overall grade statitics"""
@@ -107,7 +101,6 @@ def get_correlation_data(df):
   correlations = df[numerical_cols + ['G3']].corr()['G3'].sort_values(ascending=False)
   return correlations
 
-"""Visualization"""
 
 def plot_grade_distribution(df):
   """Create histogram of final grade distribution"""
@@ -210,17 +203,17 @@ def plot_failures_impact(df):
                f'{height:.1f}', ha='center', va='bottom', fontsize=10)
     return fig
 
-"""main application"""
+
 
 def main():
     # Header
     st.title("📚 Student Academic Performance Analyzer")
     st.markdown("""
-    <div style='background-color: #f0f2f6; padding: 20px; border-radius: 10px; margin-bottom: 20px;'>
+    <div style='background-color: #282A36; padding: 20px; border-radius: 10px; margin-bottom: 20px;'>
         <h4>📊 Project Information</h4>
         <p><strong>Dataset:</strong> UCI Machine Learning Repository - Student Performance Dataset</p>
         <p><strong>Course:</strong> DAI011 - Programming for AI</p>
-        <p><strong>Author:</strong> [Your Name] - [Your Registration Number]</p>
+        <p><strong>Author:</strong> Drina Musili💕- 250636DAI</p>
         <p><strong>Purpose:</strong> Analyze factors affecting student academic performance in Mathematics</p>
     </div>
     """, unsafe_allow_html=True)
@@ -278,7 +271,6 @@ with col5:
 
 st.markdown("---")
 
-"""Tabs"""
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "📋 Data Overview",
@@ -288,7 +280,6 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "🔍 Data Explorer"
     ])
 
-"""Data overview"""
 
 with tab1:
     st.header("📋 Dataset Overview")
@@ -355,7 +346,6 @@ with tab1:
         - `goout`: Going out with friends (1-5)
         """)
 
-""" statistical analysis"""
 
 with tab2:
     st.header("📈 Statistical Analysis")
@@ -480,7 +470,6 @@ with tab2:
         st.pyplot(fig)
         plt.close()
 
-"""visualizations"""
 
 with tab3:
     st.header("📊 Data Visualizations")
@@ -529,7 +518,6 @@ with tab3:
     plt.close()
     st.caption("This heatmap shows relationships between different features. Red indicates positive correlation, blue indicates negative correlation.")
 
-"""key insights"""
 
 with tab4:
     st.header("💡 Key Insights & Conclusions")
@@ -588,7 +576,6 @@ with tab4:
 
     st.markdown("---")
 
-"""Recommendations"""
 
 st.subheader("📝 Recommendations for Educational Improvement")
 
@@ -626,7 +613,6 @@ with col3:
 
 st.markdown("---")
 
-"""summary"""
 
 st.success("""
         ### 🎯 Summary
@@ -637,7 +623,6 @@ st.success("""
         monitoring from the first period can help identify and support struggling students before it's too late.
         """)
 
-"""Data explorer"""
 
 with tab5:
     st.header("🔍 Interactive Data Explorer")
@@ -706,7 +691,6 @@ with tab5:
     else:
         st.warning("No students match the selected filters. Try adjusting your criteria.")
 
-"""Footer"""
 
 st.markdown("---")
 st.markdown("""
